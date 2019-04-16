@@ -2,17 +2,23 @@ import os
 import sys
 print("""
 -	ddgScrape - A Duckduckgo scraper	-
-[ ] Usage: python ddgScrape.py <search term>
+[ ] Usage: python ddgScrape.py <search term> <search result amount>
 [ ] Make sure to have chromedriver.exe in the same folder!
 [ ] If you find any bug, feel free to contact me on github:
 [ ] htps://github.com/ak-wa
 
 """)
 search_term = ""
-if len(sys.argv) < 2:
-	print("[-] You did not provide a search term!")
+if len(sys.argv) <= 1:
+	print("[-] You forgot to add a search term!")
+	sys.exit()
+else:
+	pass
+if len(sys.argv) <= 2:
+	print("[-] You forgot to add an amount of search results!")
 else:
 	search_term = str(sys.argv[1])
+
 try:
 	from selenium import webdriver
 	from selenium.webdriver.common.keys import Keys
@@ -38,7 +44,7 @@ def duckduckgo(query, needed):
     html = browser.page_source
 
     soup = BeautifulSoup(html, "lxml")
-    while len(links) < needed:
+    while len(links) < int(sys.argv[2]):
         for text in soup.find_all('a', {'class': 'result__a'}):
             href = text.get('href')
             links.append(href)
@@ -46,7 +52,7 @@ def duckduckgo(query, needed):
 if search_term == "":
 	pass
 else:
-	duckduckgo(search_term, 200)
+	duckduckgo(search_term, sys.argv[2])
 	for link in links:
 		print(link)
 		output_list.write(link+"\n")
