@@ -42,7 +42,6 @@ def duckduckgo(query, needed):
     search = browser.find_element_by_name('q')
     search.send_keys(query + Keys.RETURN)
     html = browser.page_source
-
     soup = BeautifulSoup(html, "lxml")
     while len(links) < int(sys.argv[2]):
         for text in soup.find_all('a', {'class': 'result__a'}):
