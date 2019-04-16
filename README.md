@@ -1,8 +1,9 @@
 # ddgScrape
 A tool for scraping search query results from DuckDuckGo(duckduckgo.com).
-Written in python with selenium, using chromedriver.
-To make this work, make sure to place chromedriver.exe in the same path!
-
+Written in Python3 with Selenium, using Chromedriver, tested with Python v3.7.3.
+Results are automatically saved into ddg_output.txt in the same folder.
+To make this work, make sure to place Chromedriver.exe in the same path!
+If required modules are not installed, the script will attempt to install them with pip.
 Usage:
-python ddgScrape.py <search term>
+python ddgScrape.py <search term> <amount of results>
 
