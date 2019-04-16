@@ -5,7 +5,7 @@ print("""
 [ ] Usage: python ddgScrape.py <search term> <search result amount>
 [ ] Make sure to have chromedriver.exe in the same folder!
 [ ] If you find any bug, feel free to contact me on github:
-[ ] htps://github.com/ak-wa
+[ ] https://github.com/ak-wa
 
 """)
 search_term = ""
