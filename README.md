@@ -7,3 +7,4 @@ A tool for scraping search query results from DuckDuckGo.com
 ### Usage:
 `python ddgScrape.py <search term> <result amount>` 
 
+![](preview_2.gif)
