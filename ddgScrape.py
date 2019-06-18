@@ -1,5 +1,6 @@
 import os
 import sys
+import time
 print("""
 -	ddgScrape - A Duckduckgo scraper	-
 [ ] Usage: python ddgScrape.py <search term> <search result amount>
@@ -33,12 +34,14 @@ except ImportError as error:
 	from selenium.webdriver.chrome.options import Options
 	from bs4 import BeautifulSoup
 links =[]
-output_list = open("ddg_output.txt","w+")
+output_list = open("ddg_output.txt","a")
+page_counter = 0
 def duckduckgo(query, needed):
+    global page_counter
     options = Options()
-    options.headless = True
+    options.headless = False
     browser = webdriver.Chrome("chromedriver.exe", options=options)
-    browser.get("http://duckduckgo.com")
+    browser.get("https://duckduckgo.com/")
     search = browser.find_element_by_name('q')
     search.send_keys(query + Keys.RETURN)
     html = browser.page_source
@@ -48,6 +51,12 @@ def duckduckgo(query, needed):
             href = text.get('href')
             links.append(href)
             browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            page_counter += 1
+            xpath_string = "//*[@id="+"rld"+"-"+str(page_counter)+"]/a"
+            try:
+                browser.find_element_by_class_name('result--more__btn').click()
+            except:
+                pass
 if search_term == "":
 	pass
 else:
