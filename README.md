@@ -1,4 +1,4 @@
-# ddgScrape
+# ddgScrape [deprecated project]
 ![python](https://img.shields.io/pypi/pyversions/Django.svg)
 ![size](https://img.shields.io/github/size/ak-wa/ddgScrape/ddgScrape.py.svg)
 ![lastcommit](https://img.shields.io/github/last-commit/ak-wa/ddgScrape.svg)
